@@ -1,7 +1,7 @@
-﻿using BizTalkComponents.Utils.PropertyBagHelpers;
+﻿using BizTalkComponents.Utils;
+using BizTalkComponents.Utils.ContextExtensions;
 using Microsoft.BizTalk.Component.Interop;
 using Microsoft.BizTalk.Message.Interop;
-using BizTalkComponents.Utils.ContextPropertyHelpers;
 
 namespace BizTalkComponents.PipelineComponents.SetProperty
 {
