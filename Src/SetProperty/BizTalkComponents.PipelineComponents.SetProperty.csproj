@@ -43,6 +43,7 @@
       <HintPath>..\..\..\..\..\Windows\assembly\GAC_MSIL\Microsoft.BizTalk.Pipeline\3.0.1.0__31bf3856ad364e35\Microsoft.BizTalk.Pipeline.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -53,7 +54,10 @@
   <ItemGroup>
     <Compile Include="BiztalkComponents.Utils\ContextExtensions.cs" />
     <Compile Include="BiztalkComponents.Utils\ContextProperties.cs" />
+    <Compile Include="BiztalkComponents.Utils\ContextProperty.cs" />
     <Compile Include="BiztalkComponents.Utils\PropertyBagHelper.cs" />
+    <Compile Include="BiztalkComponents.Utils\RequiredRuntimeAttribute.cs" />
+    <Compile Include="BiztalkComponents.Utils\ValidationHelper.cs" />
     <Compile Include="SetProperty.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
