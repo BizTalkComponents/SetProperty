@@ -26,15 +26,8 @@ namespace BizTalkComponents.PipelineComponents.SetProperty
 
         public void Load(IPropertyBag propertyBag, int errorLog)
         {
-            if (string.IsNullOrEmpty(PropertyPath))
-            {
-                PropertyPath = PropertyBagHelper.ToStringOrDefault(PropertyBagHelper.ReadPropertyBag(propertyBag, PropertyPathPropertyName), string.Empty);
-            }
-
-            if (string.IsNullOrEmpty(Value))
-            {
-                Value = PropertyBagHelper.ToStringOrDefault(PropertyBagHelper.ReadPropertyBag(propertyBag, ValuePropertyName), string.Empty);
-            }   
+            PropertyPath = PropertyBagHelper.ToStringOrDefault(PropertyBagHelper.ReadPropertyBag(propertyBag, PropertyPathPropertyName), string.Empty);
+            Value = PropertyBagHelper.ToStringOrDefault(PropertyBagHelper.ReadPropertyBag(propertyBag, ValuePropertyName), string.Empty);
         }
 
         public void Save(IPropertyBag propertyBag, bool clearDirty, bool saveAllProperties)
