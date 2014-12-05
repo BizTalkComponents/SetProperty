@@ -1,7 +1,10 @@
-﻿using BizTalkComponents.Utils;
-using BizTalkComponents.Utils.ContextExtensions;
+﻿using System;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using BizTalkComponents.Utils;
 using Microsoft.BizTalk.Component.Interop;
 using Microsoft.BizTalk.Message.Interop;
+using IComponent = Microsoft.BizTalk.Component.Interop.IComponent;
 
 namespace BizTalkComponents.PipelineComponents.SetProperty
 {
@@ -14,27 +17,36 @@ namespace BizTalkComponents.PipelineComponents.SetProperty
         private const string PropertyPathPropertyName = "PropertyPath";
         private const string ValuePropertyName = "Value";
 
+        [DisplayName("Property Path")]
+        [Description("The property path where the specified value will be promoted to, i.e. http://temupuri.org#MyProperty.")]
+        [RegularExpression(@"^.*#.*$",
+         ErrorMessage = "A property path should be formatted as namespace#property.")]
+        [RequiredRuntime]
         public string PropertyPath { get; set; }
+
+        [DisplayName("Value")]
+        [Description("The value that should be promoted to the specified property.")]
+        [RequiredRuntime]
         public string Value { get; set; }
 
         public IBaseMessage Execute(IPipelineContext pContext, IBaseMessage pInMsg)
         {
-            pInMsg.Context.Promote(new ContextProperty(PropertyPath),Value);
+            string errorMessage;
+
+            if (!Validate(out errorMessage))
+            {
+                throw new ArgumentException(errorMessage);
+            }
+
+            pInMsg.Context.Promote(new ContextProperty(PropertyPath), Value);
 
             return pInMsg;
         }
 
         public void Load(IPropertyBag propertyBag, int errorLog)
         {
-            if (string.IsNullOrEmpty(PropertyPath))
-            {
-                PropertyPath = PropertyBagHelper.ToStringOrDefault(PropertyBagHelper.ReadPropertyBag(propertyBag, PropertyPathPropertyName), string.Empty);
-            }
-
-            if (string.IsNullOrEmpty(Value))
-            {
-                Value = PropertyBagHelper.ToStringOrDefault(PropertyBagHelper.ReadPropertyBag(propertyBag, ValuePropertyName), string.Empty);
-            }   
+            PropertyPath = PropertyBagHelper.ToStringOrDefault(PropertyBagHelper.ReadPropertyBag(propertyBag, PropertyPathPropertyName), string.Empty);
+            Value = PropertyBagHelper.ToStringOrDefault(PropertyBagHelper.ReadPropertyBag(propertyBag, ValuePropertyName), string.Empty);
         }
 
         public void Save(IPropertyBag propertyBag, bool clearDirty, bool saveAllProperties)
