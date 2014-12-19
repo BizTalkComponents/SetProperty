@@ -2,10 +2,9 @@
 <package >
   <metadata>
     <id>BizTalkComponents.PipelineComponents.SetProperty</id>
-    <version>1.0.0.0</version>
+    <version>1.0.0.1</version>
     <authors>Robin Hultman</authors>
-    <owners>ibizsolutions</owners>
-    <projectUrl>https://github.com/ibizsolutions/BizTalkComponents.SetProperty</projectUrl>
+    <projectUrl>https://github.com/BizTalkComponents/SetProperty</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Promotes a specified value to a specified property.</description>
     <releaseNotes>Initial release.</releaseNotes>
