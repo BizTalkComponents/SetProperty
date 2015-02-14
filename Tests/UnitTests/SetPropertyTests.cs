@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Winterdom.BizTalk.PipelineTesting;
 
-namespace BizTalkComponents.PipelineComponents.SetProperty
+namespace BizTalkComponents.PipelineComponents.SetProperty.Tests.UnitTests
 {
     [TestClass]
     public class SetPropertyTests
@@ -10,7 +10,7 @@ namespace BizTalkComponents.PipelineComponents.SetProperty
         public void TestSetProperty()
         {
             var pipeline = PipelineFactory.CreateEmptyReceivePipeline();
-            var component = new PipelineComponents.SetProperty.SetProperty
+            var component = new SetProperty
             {
                 PropertyPath = "http://tempuri.org#MyProp",
                 Value = "Test"
