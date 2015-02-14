@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Winterdom.BizTalk.PipelineTesting;
 
-namespace BizTalkComponents.SetProperty.Tests.UnitTests
+namespace BizTalkComponents.PipelineComponents.SetProperty
 {
     [TestClass]
     public class SetPropertyTests

@@ -6,8 +6,8 @@
     <ProjectGuid>{56D2E857-1398-48E0-A640-1ABC8DD2E689}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BizTalkComponents.SetProperty.Tests.UnitTests</RootNamespace>
-    <AssemblyName>BizTalkComponents.SetProperty.Tests.UnitTests</AssemblyName>
+    <RootNamespace>BizTalkComponents.PipelineComponents.SetProperty</RootNamespace>
+    <AssemblyName>BizTalkComponents.PipelineComponents.SetProperty</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
