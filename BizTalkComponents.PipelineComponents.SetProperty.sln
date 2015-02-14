@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{4F362C
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizTalkComponents.SetProperty.Tests.UnitTests", "Tests\UnitTests\BizTalkComponents.SetProperty.Tests.UnitTests.csproj", "{56D2E857-1398-48E0-A640-1ABC8DD2E689}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizTalkComponents.PipelineComponents.SetProperty.Tests.UnitTests", "Tests\UnitTests\BizTalkComponents.PipelineComponents.SetProperty.Tests.UnitTests.csproj", "{56D2E857-1398-48E0-A640-1ABC8DD2E689}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{3362970A-DB0B-4EA8-8BB7-B066FEA6CBF8}"
 	ProjectSection(SolutionItems) = preProject
