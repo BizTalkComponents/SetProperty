@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>BizTalkComponents.PipelineComponents.SetProperty</id>
-    <version>1.0.0.1</version>
+    <version>$version$</version>
     <authors>Robin Hultman</authors>
     <projectUrl>https://github.com/BizTalkComponents/SetProperty</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
