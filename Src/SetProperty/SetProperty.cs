@@ -44,7 +44,14 @@ namespace BizTalkComponents.PipelineComponents.SetProperty
                 throw new ArgumentException(errorMessage);
             }
 
-            pInMsg.Context.Promote(new ContextProperty(PropertyPath), Value);
+            if (PromoteProperty)
+            {
+                pInMsg.Context.Promote(new ContextProperty(PropertyPath), Value);    
+            }
+            else
+            {
+                pInMsg.Context.Write(new ContextProperty(PropertyPath), Value);    
+            }
 
             return pInMsg;
         }
