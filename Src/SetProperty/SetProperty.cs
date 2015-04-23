@@ -16,6 +16,7 @@ namespace BizTalkComponents.PipelineComponents.SetProperty
     {
         private const string PropertyPathPropertyName = "PropertyPath";
         private const string ValuePropertyName = "Value";
+        private const string PromoteProperytName = "Promote";
 
         [DisplayName("Property Path")]
         [Description("The property path where the specified value will be promoted to, i.e. http://temupuri.org#MyProperty.")]
@@ -29,6 +30,11 @@ namespace BizTalkComponents.PipelineComponents.SetProperty
         [RequiredRuntime]
         public string Value { get; set; }
 
+        [DisplayName("Promote Property")]
+        [Description("Specifies whether the property should be promoted or just written to the context.")]
+        [RequiredRuntime]
+        public bool PromoteProperty { get; set; }
+
         public IBaseMessage Execute(IPipelineContext pContext, IBaseMessage pInMsg)
         {
             string errorMessage;
@@ -38,21 +44,30 @@ namespace BizTalkComponents.PipelineComponents.SetProperty
                 throw new ArgumentException(errorMessage);
             }
 
-            pInMsg.Context.Promote(new ContextProperty(PropertyPath), Value);
+            if (PromoteProperty)
+            {
+                pInMsg.Context.Promote(new ContextProperty(PropertyPath), Value);    
+            }
+            else
+            {
+                pInMsg.Context.Write(new ContextProperty(PropertyPath), Value);    
+            }
 
             return pInMsg;
         }
 
         public void Load(IPropertyBag propertyBag, int errorLog)
         {
-            PropertyPath = PropertyBagHelper.ToStringOrDefault(PropertyBagHelper.ReadPropertyBag(propertyBag, PropertyPathPropertyName), string.Empty);
-            Value = PropertyBagHelper.ToStringOrDefault(PropertyBagHelper.ReadPropertyBag(propertyBag, ValuePropertyName), string.Empty);
+            PropertyPath = PropertyBagHelper.ReadPropertyBag<string>(propertyBag, PropertyPathPropertyName);
+            Value = PropertyBagHelper.ReadPropertyBag<string>(propertyBag, ValuePropertyName);
+            PromoteProperty = PropertyBagHelper.ReadPropertyBag<bool>(propertyBag, PromoteProperytName);
         }
 
         public void Save(IPropertyBag propertyBag, bool clearDirty, bool saveAllProperties)
         {
             PropertyBagHelper.WritePropertyBag(propertyBag, PropertyPathPropertyName, PropertyPath);
             PropertyBagHelper.WritePropertyBag(propertyBag, ValuePropertyName, Value);
+            PropertyBagHelper.WritePropertyBag(propertyBag, PromoteProperytName, PromoteProperty);
         }
     }
 }

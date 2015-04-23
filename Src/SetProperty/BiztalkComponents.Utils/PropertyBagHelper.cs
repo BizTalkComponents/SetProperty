@@ -39,6 +39,34 @@ namespace BizTalkComponents.Utils
             return val;
         }
 
+        public static T ReadPropertyBag<T>(IPropertyBag pb, string propName)
+        {
+            try
+            {
+                object val;
+                pb.Read(propName, out val, 0);
+
+                if (val == null)
+                {
+                    return default(T);
+                }
+
+                return (T)val;
+            }
+            catch (ArgumentException)
+            {
+                return default(T);
+            }
+            catch (InvalidCastException)
+            {
+                return default(T);
+            }
+            catch (Exception e)
+            {
+                throw new ApplicationException(e.Message);
+            }
+        }
+
         /// <summary>
         /// Writes property values into a property bag.
         /// </summary>
