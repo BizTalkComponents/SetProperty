@@ -16,6 +16,7 @@ namespace BizTalkComponents.PipelineComponents.SetProperty
     {
         private const string PropertyPathPropertyName = "PropertyPath";
         private const string ValuePropertyName = "Value";
+        private const string PromoteProperytName = "Promote";
 
         [DisplayName("Property Path")]
         [Description("The property path where the specified value will be promoted to, i.e. http://temupuri.org#MyProperty.")]
@@ -28,6 +29,11 @@ namespace BizTalkComponents.PipelineComponents.SetProperty
         [Description("The value that should be promoted to the specified property.")]
         [RequiredRuntime]
         public string Value { get; set; }
+
+        [DisplayName("Promote Property")]
+        [Description("Specifies whether the property should be promoted or just written to the context.")]
+        [RequiredRuntime]
+        public bool PromoteProperty { get; set; }
 
         public IBaseMessage Execute(IPipelineContext pContext, IBaseMessage pInMsg)
         {
@@ -47,12 +53,14 @@ namespace BizTalkComponents.PipelineComponents.SetProperty
         {
             PropertyPath = PropertyBagHelper.ToStringOrDefault(PropertyBagHelper.ReadPropertyBag(propertyBag, PropertyPathPropertyName), string.Empty);
             Value = PropertyBagHelper.ToStringOrDefault(PropertyBagHelper.ReadPropertyBag(propertyBag, ValuePropertyName), string.Empty);
+            PromoteProperty = PropertyBagHelper.ReadPropertyBagBool(propertyBag, PromoteProperytName);
         }
 
         public void Save(IPropertyBag propertyBag, bool clearDirty, bool saveAllProperties)
         {
             PropertyBagHelper.WritePropertyBag(propertyBag, PropertyPathPropertyName, PropertyPath);
             PropertyBagHelper.WritePropertyBag(propertyBag, ValuePropertyName, Value);
+            PropertyBagHelper.WritePropertyBag(propertyBag, PromoteProperytName, PromoteProperty);
         }
     }
 }
