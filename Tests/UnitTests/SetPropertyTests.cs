@@ -7,13 +7,14 @@ namespace BizTalkComponents.PipelineComponents.SetProperty.Tests.UnitTests
     public class SetPropertyTests
     {
         [TestMethod]
-        public void TestSetProperty()
+        public void TestSetPropertyPromote()
         {
             var pipeline = PipelineFactory.CreateEmptyReceivePipeline();
             var component = new SetProperty
             {
                 PropertyPath = "http://tempuri.org#MyProp",
-                Value = "Test"
+                Value = "Test",
+                PromoteProperty = true
             };
 
             pipeline.AddComponent(component, PipelineStage.Decode);
