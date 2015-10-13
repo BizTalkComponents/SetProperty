@@ -68,23 +68,12 @@ namespace BizTalkComponents.Utils
                 object val;
                 pb.Read(propName, out val, 0);
 
-                T newValue;
-
                 if (val == null)
-                {
-                    newValue = default(T);
-                }
-                else
-                {
-                    newValue = (T)val;    
-                }
-
-                if (EqualityComparer<T>.Default.Equals(newValue, default(T)))
                 {
                     return oldValue;
                 }
-
-                return newValue;
+                
+                return val is T ? (T)val : default(T);
             }
             catch (ArgumentException)
             {
