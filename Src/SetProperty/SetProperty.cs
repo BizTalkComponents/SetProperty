@@ -58,9 +58,9 @@ namespace BizTalkComponents.PipelineComponents.SetProperty
 
         public void Load(IPropertyBag propertyBag, int errorLog)
         {
-            PropertyPath = PropertyBagHelper.ReadPropertyBag<string>(propertyBag, PropertyPathPropertyName);
-            Value = PropertyBagHelper.ReadPropertyBag<string>(propertyBag, ValuePropertyName);
-            PromoteProperty = PropertyBagHelper.ReadPropertyBag<bool>(propertyBag, PromoteProperytName);
+            PropertyPath = PropertyBagHelper.ReadPropertyBag(propertyBag, PropertyPathPropertyName, PropertyPath);
+            Value = PropertyBagHelper.ReadPropertyBag(propertyBag, ValuePropertyName, Value);
+            PromoteProperty = PropertyBagHelper.ReadPropertyBag(propertyBag, PromoteProperytName,PromoteProperty);
         }
 
         public void Save(IPropertyBag propertyBag, bool clearDirty, bool saveAllProperties)
